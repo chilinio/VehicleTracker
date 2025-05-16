@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Extreme - Vehicle Maintenance & Customization</title>
+    <style>
+        :root {
+            --primary: #e63946;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --accent: #457b9d;
+            --secondary: #a8dadc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+        }
+        
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: var(--accent);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .service-content .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .about {
+            padding: 80px 0;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            padding: 80px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item .overlay-content {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-item .overlay-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .testimonials {
+            background-color: var(--secondary);
+            padding: 80px 0;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-card .client {
+            font-weight: bold;
+        }
+        
+        .testimonial-card .client-title {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            padding: 80px 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form h3, .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info-item .icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-info-item .details {
+            flex: 1;
+        }
+        
+        .contact-info-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .map {
+            height: 300px;
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Auto<span>Extreme</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Vehicle Experience</h1>
+                <p>Professional vehicle maintenance, customization, and revival services that elevate your ride to the next level.</p>
+                <a href="#services" class="btn">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Services</h2>
+                <p>From routine maintenance to complete vehicle transformations, we offer comprehensive automotive solutions tailored to your needs.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Vehicle Customization">
+                    </div>
+                    <div class="service-content">
+                        <h3>Vehicle Customization</h3>
+                        <p>Transform your vehicle with our premium customization services. From custom paint jobs to performance upgrades, we'll help you create a ride that reflects your unique style.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Engine Maintenance">
+                    </div>
+                    <div class="service-content">
+                        <h3>Engine Maintenance</h3>
+                        <p>Keep your vehicle running at peak performance with our comprehensive engine maintenance services. Our certified technicians use the latest tools and techniques.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="AC System Service">
+                    </div>
+                    <div class="service-content">
+                        <h3>AC System Service</h3>
+                        <p>Stay cool with our professional AC system maintenance and repair services. We diagnose, repair, and maintain all types of vehicle air conditioning systems.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Classic Car Revamping">
+                    </div>
+                    <div class="service-content">
+                        <h3>Classic Car Revamping</h3>
+                        <p>Breathe new life into your classic vehicle with our revamping services. We specialize in restoring and upgrading vintage cars while maintaining their authentic charm.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Vehicle Upgrades">
+                    </div>
+                    <div class="service-content">
+                        <h3>Vehicle Upgrades</h3>
+                        <p>Enhance your vehicle's performance, aesthetics, and functionality with our comprehensive upgrade packages. From modern tech to performance boosters.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/400/200" alt="Accessories Shop">
+                    </div>
+                    <div class="service-content">
+                        <h3>Accessories Shop</h3>
+                        <p>Browse our extensive collection of high-quality automotive accessories. From performance parts to interior upgrades, we have everything to personalize your ride.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Auto Extreme</h2>
+                    <p>With over 15 years of experience in the automotive industry, Auto Extreme has established itself as a leading provider of vehicle maintenance and customization services. Our team of certified technicians and automotive enthusiasts are passionate about delivering exceptional results.</p>
+                    <p>We combine technical expertise with creative vision to transform ordinary vehicles into extraordinary machines. Whether you're looking for routine maintenance, performance upgrades, or a complete vehicle transformation, we have the skills and equipment to exceed your expectations.</p>
+                    <p>At Auto Extreme, we use only the highest quality parts and materials, and our state-of-the-art facility is equipped with the latest automotive technology to ensure precision and excellence in every project.</p>
+                    <a href="#contact" class="btn">Contact Us Today</a>
+                </div>
+                <div class="about-img">
+                    <img src="/api/placeholder/500/400" alt="Our Workshop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work Gallery</h2>
+                <p>Take a look at some of our recent projects and transformations that showcase our expertise and attention to detail.</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Custom Sports Car">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Performance Upgrade Package</h3>
+                            <p>Full engine overhaul and performance tuning</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Classic Car Restoration">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>1965 Mustang Restoration</h3>
+                            <p>Complete restoration with modern upgrades</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Custom Interior">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Luxury Interior Customization</h3>
+                            <p>Premium leather and advanced tech integration</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Custom Paint Job">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Custom Paint & Graphics</h3>
+                            <p>Metallic finish with custom airbrushing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Wheel Customization">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Premium Wheel Package</h3>
+                            <p>Custom rims with performance tires</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Engine Rebuild">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Complete Engine Rebuild</h3>
+                            <p>High-performance engine with custom tuning</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="Sound System">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Premium Audio Installation</h3>
+                            <p>Custom sound system with amplifiers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/400" alt="SUV Customization">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>SUV Overhaul Package</h3>
+                            <p>Lift kit, off-road accessories, and more</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our satisfied customers have to say about their experience with Auto Extreme.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p>"Auto Extreme completely transformed my 2012 Mustang into a modern beast. The engine upgrades and interior customization exceeded my expectations. The team was professional, knowledgeable, and completed the work ahead of schedule."</p>
+                    <div class="client">Michael R.</div>
+                    <div class="client-title">Car Enthusiast</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Vehicle?</h2>
+            <p>Schedule a consultation with our experts today and discover how we can enhance your driving experience.</p>
+            <a href="#contact" class="btn">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Have questions or ready to start your project? Reach out to us using any of the methods below.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="customization">Vehicle Customization</option>
+                                <option value="engine">Engine Maintenance</option>
+                                <option value="ac">AC System Service</option>
+                                <option value="revamping">Classic Car Revamping</option>
+                                <option value="upgrades">Vehicle Upgrades</option>
+                                <option value="accessories">Accessories Purchase</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info-item">
+                        <div class="icon">📍</div>
+                        <div class="details">
+                            <h4>Location</h4>
+                            <p>123 Automotive Drive, Motor City, MC 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="icon">📞</div>
+                        <div class="details">
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="icon">✉️</div>
+                        <div class="details">
+                            <h4>Email</h4>
+                            <p>info@autoextreme.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="icon">⏰</div>
+                        <div class="details">
+                            <h4>Business Hours</h4>
+                            <p>Monday-Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <img src="/api/placeholder/600/300" alt="Map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Auto Extreme</h3>
+                    <p>Your premier destination for vehicle maintenance, customization, and transformation services. Driven by passion, delivered with excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><span>fb</span></a>
+                        <a href="#"><span>ig</span></a>
+                        <a href="#"><span>tw</span></a>
+                        <a href="#"><span>yt</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Vehicle Customization</a></li>
+                        <li><a href="#">Engine Maintenance</a></li>
+                        <li><a href="#">AC System Service</a></li>
+                        <li><a href="#">Classic Car Revamping</a></li>
+                        <li><a href="#">Vehicle Upgrades</a></li>
+                        <li><a href="#">Accessories Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest news, promotions, and automotive tips.</p>
+                    <form class="footer-form">
