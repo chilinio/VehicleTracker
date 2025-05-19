@@ -60,11 +60,10 @@ export class MemStorage implements IStorage {
   
   async addContact(contactData: InsertContact & { createdAt: string }): Promise<Contact> {
     const id = this.contactCurrentId++;
-    // Ensure service has a default value if not provided
+    // Create the contact with all fields
     const contact: Contact = { 
       ...contactData, 
-      id,
-      service: contactData.service || '' 
+      id
     };
     this.contacts.set(id, contact);
     return contact;
