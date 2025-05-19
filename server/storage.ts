@@ -1,4 +1,6 @@
-import { users, type User, type InsertUser, type Contact, type InsertContact, type Subscriber, type InsertSubscriber } from "@shared/schema";
+import { users, contacts, subscribers, type User, type InsertUser, type Contact, type InsertContact, type Subscriber, type InsertSubscriber } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -18,70 +20,50 @@ export interface IStorage {
   addSubscriber(subscriber: InsertSubscriber & { createdAt: string }): Promise<Subscriber>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contacts: Map<number, Contact>;
-  private subscribers: Map<number, Subscriber>;
-  private userCurrentId: number;
-  private contactCurrentId: number;
-  private subscriberCurrentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contacts = new Map();
-    this.subscribers = new Map();
-    this.userCurrentId = 1;
-    this.contactCurrentId = 1;
-    this.subscriberCurrentId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.userCurrentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db.insert(users).values(insertUser).returning();
     return user;
   }
   
   // Contact methods
   async getContact(id: number): Promise<Contact | undefined> {
-    return this.contacts.get(id);
+    const [contact] = await db.select().from(contacts).where(eq(contacts.id, id));
+    return contact;
   }
   
   async addContact(contactData: InsertContact & { createdAt: string }): Promise<Contact> {
-    const id = this.contactCurrentId++;
-    // Create the contact with all fields
-    const contact: Contact = { 
-      ...contactData, 
-      id
+    // Make sure service is never undefined
+    const data = {
+      ...contactData,
+      service: contactData.service || ""
     };
-    this.contacts.set(id, contact);
+    
+    const [contact] = await db.insert(contacts).values(data).returning();
     return contact;
   }
   
   // Subscriber methods
   async getSubscriberByEmail(email: string): Promise<Subscriber | undefined> {
-    return Array.from(this.subscribers.values()).find(
-      (subscriber) => subscriber.email === email,
-    );
+    const [subscriber] = await db.select().from(subscribers).where(eq(subscribers.email, email));
+    return subscriber;
   }
   
   async addSubscriber(subscriberData: InsertSubscriber & { createdAt: string }): Promise<Subscriber> {
-    const id = this.subscriberCurrentId++;
-    const subscriber: Subscriber = { ...subscriberData, id };
-    this.subscribers.set(id, subscriber);
+    const [subscriber] = await db.insert(subscribers).values(subscriberData).returning();
     return subscriber;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
