@@ -25,14 +25,7 @@ const Testimonials = () => {
     }
   };
 
-  // Auto-rotate testimonials every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      scrollToTestimonial(currentIndex + 1);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [currentIndex]);
+  // Removed auto-rotation to prevent unexpected scrolling
 
   return (
     <section id="testimonials" className="py-20 bg-[#a8dadc]">
