@@ -18,7 +18,7 @@ const Cta = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              href="#contact" 
+              href="/book-appointment" 
               className="bg-[#e63946] hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition-colors text-lg uppercase tracking-wide"
             >
               Book Now

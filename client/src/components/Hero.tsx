@@ -24,7 +24,7 @@ const Hero = () => {
               Our Services
             </a>
             <a 
-              href="#contact" 
+              href="/book-appointment" 
               className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded-md transition-colors text-lg uppercase tracking-wide"
             >
               Book Appointment

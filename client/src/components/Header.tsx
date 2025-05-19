@@ -24,12 +24,13 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/#services' },
+    { label: 'About', href: '/#about' },
+    { label: 'Gallery', href: '/#gallery' },
+    { label: 'Testimonials', href: '/#testimonials' },
+    { label: 'Book Appointment', href: '/book-appointment' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (
