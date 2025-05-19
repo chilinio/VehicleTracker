@@ -15,7 +15,11 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
-  service: z.string().optional(),
+  address: z.string().min(5, { message: "Address must be at least 5 characters" }),
+  city: z.string().min(2, { message: "City must be at least 2 characters" }),
+  state: z.string().min(2, { message: "State must be at least 2 characters" }),
+  zipCode: z.string().min(5, { message: "Zip code must be at least 5 characters" }),
+  service: z.string().default(""),
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
 });
 
@@ -31,6 +35,10 @@ const Contact = () => {
       name: '',
       email: '',
       phone: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
       service: '',
       message: '',
     },
@@ -155,6 +163,76 @@ const Contact = () => {
                       </FormItem>
                     )}
                   />
+                  
+                  <FormField
+                    control={form.control}
+                    name="address"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-medium">Street Address</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            className="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#e63946]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="city"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-gray-700 font-medium">City</FormLabel>
+                          <FormControl>
+                            <Input
+                              {...field}
+                              className="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#e63946]"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="state"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-gray-700 font-medium">State</FormLabel>
+                          <FormControl>
+                            <Input
+                              {...field}
+                              className="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#e63946]"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="zipCode"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-gray-700 font-medium">Zip Code</FormLabel>
+                          <FormControl>
+                            <Input
+                              {...field}
+                              className="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#e63946]"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   
                   <FormField
                     control={form.control}

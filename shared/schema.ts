@@ -22,7 +22,11 @@ export const contacts = pgTable("contacts", {
   name: text("name").notNull(),
   email: text("email").notNull(),
   phone: text("phone").notNull(),
-  service: text("service"),
+  address: text("address").notNull(),
+  city: text("city").notNull(),
+  state: text("state").notNull(),
+  zipCode: text("zip_code").notNull(),
+  service: text("service").notNull().default(''),
   message: text("message").notNull(),
   createdAt: text("created_at").notNull(),
 });
