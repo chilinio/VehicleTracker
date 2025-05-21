@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold text-[#e63946] mb-6">Auto Extreme</h3>
+            <h3 className="text-xl font-bold text-[#e63946] mb-6">Blackdot Autos</h3>
             <p className="text-gray-300 mb-6">
               Providing premium automotive maintenance and customization services since 2005. 
               We pride ourselves on quality workmanship and exceptional customer service.
@@ -177,7 +177,7 @@ const Footer = () => {
         
         {/* Footer Bottom */}
         <div className="pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
-          <p>&copy; {year} Auto Extreme. All rights reserved.</p>
+          <p>&copy; {year} Blackdot Autos. All rights reserved.</p>
           <div className="mt-2 flex justify-center space-x-6">
             <a href="#" className="hover:text-[#e63946] transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-[#e63946] transition-colors">Terms of Service</a>

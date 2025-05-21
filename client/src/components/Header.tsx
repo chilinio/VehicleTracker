@@ -38,7 +38,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex justify-between items-center py-4">
           <a href="#" className="text-2xl font-bold font-['Montserrat'] text-[#e63946]">
-            Auto<span className="text-white">Extreme</span>
+            Blackdot<span className="text-white">Autos</span>
           </a>
           
           {/* Desktop Navigation */}

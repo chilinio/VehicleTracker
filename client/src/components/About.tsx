@@ -14,9 +14,9 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <h2 className="text-4xl font-bold font-['Montserrat'] mb-6">About Auto Extreme</h2>
+            <h2 className="text-4xl font-bold font-['Montserrat'] mb-6">About Blackdot Autos</h2>
             <p className="text-lg mb-6">
-              Founded in 2005, Auto Extreme has been providing exceptional automotive services for over 15 years. 
+              Founded in 2005, Blackdot Autos has been providing exceptional automotive services for over 15 years. 
               We combine traditional craftsmanship with cutting-edge technology to deliver results that exceed expectations.
             </p>
             <p className="text-lg mb-6">

@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="max-w-3xl mx-auto text-white">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-['Montserrat'] mb-6 leading-tight">
-            Expert Vehicle Maintenance & Customization
+            Blackdot Autos: Expert Vehicle Maintenance
           </h1>
           <p className="text-xl mb-8">
             Your trusted partner for all automotive needs, from routine maintenance to premium customization services.

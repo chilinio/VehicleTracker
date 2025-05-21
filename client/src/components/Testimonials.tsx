@@ -35,7 +35,7 @@ const Testimonials = () => {
             What Our Customers Say
           </h2>
           <p className="text-lg text-[#457b9d]">
-            Hear from our satisfied customers about their experience with Auto Extreme.
+            Hear from our satisfied customers about their experience with Blackdot Autos.
           </p>
         </div>
         
