@@ -1,198 +1,111 @@
-# Auto Extreme - Vehicle Maintenance & Customization Website
+# Blackdot Autos - Vehicle Maintenance Website
 
-![Auto Extreme](https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1000)
+A comprehensive automotive service management platform for Blackdot Autos, providing seamless online booking, client registration, and vehicle maintenance tracking.
 
-## Project Overview
+![Blackdot Autos](./generated-icon.png)
 
-Auto Extreme is a responsive website for a vehicle maintenance and customization business. The platform showcases services, displays a gallery of completed work, features customer testimonials, and provides a client registration system for booking appointments.
+## Features
 
-## Current Status
+- **Home Page**: Showcases services, gallery, testimonials, and contact information
+- **Appointment Booking**: Dedicated booking page with comprehensive client registration
+- **Client Registration**: Captures full client details including name, address, phone, and email
+- **Responsive Design**: Mobile-friendly interface that works on all devices
+- **Service Catalog**: Detailed information about available maintenance services
+- **Testimonials**: Customer reviews with manual navigation controls
+- **Contact Form**: Easy way for clients to send inquiries
 
-The project is functional with the following completed features:
+## Technology Stack
 
-- ✅ Responsive homepage with modern design
-- ✅ Services showcase section
-- ✅ About section with company information
-- ✅ Gallery of completed work with filtering
-- ✅ Customer testimonials section
-- ✅ Appointment booking system with client registration
-- ✅ Newsletter subscription
-- ✅ Persistent database storage for contacts and subscribers
-- ✅ Fully responsive design for all device sizes
+- **Frontend**:
+  - React.js with TypeScript
+  - Tailwind CSS for styling
+  - ShadCN UI components
+  - React Hook Form for form handling
+  - Zod for validation
 
-## Tech Stack
+- **Backend**:
+  - Express.js server
+  - PostgreSQL database
+  - Drizzle ORM for database operations
+  - API endpoints for client data submission
 
-### Frontend
-- **React** - UI library
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Shadcn UI** - Component library
-- **React Hook Form** - Form management
-- **Zod** - Schema validation
-- **TanStack Query** - Data fetching and state management
-- **Wouter** - Routing
-
-### Backend
-- **Express.js** - Node.js web server
-- **Drizzle ORM** - Database ORM
-- **PostgreSQL** - Database
-- **Vite** - Development server and bundler
-
-## Dependencies
-
-```json
-"dependencies": {
-  "@hookform/resolvers": "^latest",
-  "@neondatabase/serverless": "^latest",
-  "@radix-ui/react-*": "^latest",
-  "@tanstack/react-query": "^latest",
-  "class-variance-authority": "^latest",
-  "clsx": "^latest",
-  "connect-pg-simple": "^latest",
-  "date-fns": "^latest",
-  "drizzle-kit": "^latest",
-  "drizzle-orm": "^latest",
-  "drizzle-zod": "^latest",
-  "express": "^latest",
-  "express-session": "^latest",
-  "lucide-react": "^latest",
-  "react": "^latest",
-  "react-dom": "^latest",
-  "react-hook-form": "^latest",
-  "react-icons": "^latest",
-  "tailwindcss": "^latest",
-  "typescript": "^latest",
-  "wouter": "^latest",
-  "zod": "^latest",
-  "zod-validation-error": "^latest"
-}
-```
+- **Other Tools**:
+  - TanStack React Query for data fetching
+  - Wouter for routing
 
 ## Setup Instructions
 
 ### Prerequisites
-- Node.js (v18 or newer)
-- npm or yarn
-- PostgreSQL database (local or remote)
 
-### Clone and Setup
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd auto-extreme
-   ```
+- Node.js (v16 or newer)
+- PostgreSQL database
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+### Installation
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory with the following variables:
-   ```
-   DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database>
-   ```
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/blackdot-autos.git
+cd blackdot-autos
+```
 
-4. Initialize the database:
-   ```
-   npm run db:push
-   ```
+2. Install dependencies
+```bash
+npm install
+```
 
-5. Start the development server:
-   ```
-   npm run dev
-   ```
+3. Set up environment variables
+Create a `.env` file in the root directory with the following variables:
+```
+DATABASE_URL=postgresql://username:password@localhost:5432/blackdot
+```
 
-6. Open your browser and navigate to:
-   ```
-   http://localhost:5000
-   ```
+4. Set up the database
+```bash
+npm run db:push
+```
+
+5. Start the development server
+```bash
+npm run dev
+```
+
+6. Open your browser and navigate to `http://localhost:5000`
+
+## Database Schema
+
+The application uses the following database tables:
+
+- **users**: Store user authentication information
+- **contacts**: Store client inquiries and contact form submissions
+- **subscribers**: Store newsletter subscribers
+- **appointments** (future implementation): Store appointment bookings
 
 ## Project Structure
 
 ```
-/
-├── client/
+├── client/               # Frontend React application
 │   ├── src/
-│   │   ├── components/      # UI components
-│   │   ├── hooks/           # Custom React hooks
-│   │   ├── lib/             # Utility functions
-│   │   ├── pages/           # Page components
-│   │   ├── App.tsx          # Main app component
-│   │   ├── index.css        # Global CSS
-│   │   └── main.tsx         # Entry point
-│   └── index.html           # HTML template
-├── server/
-│   ├── db.ts                # Database configuration
-│   ├── index.ts             # Server entry point
-│   ├── routes.ts            # API routes
-│   ├── storage.ts           # Data storage abstraction
-│   └── vite.ts              # Vite server configuration
-├── shared/
-│   └── schema.ts            # Shared data models and schemas
-├── drizzle.config.ts        # Drizzle ORM configuration
-├── package.json             # Project metadata and dependencies
-├── tailwind.config.js       # Tailwind CSS configuration
-├── tsconfig.json            # TypeScript configuration
-└── vite.config.ts           # Vite configuration
+│   │   ├── components/   # Reusable UI components
+│   │   ├── hooks/        # Custom React hooks
+│   │   ├── lib/          # Helper functions and utilities
+│   │   ├── pages/        # Page components
+│   │   └── App.tsx       # Main application component
+├── server/               # Backend Express server
+│   ├── routes.ts         # API routes
+│   ├── storage.ts        # Database access layer
+│   └── db.ts             # Database connection
+├── shared/               # Shared code between frontend and backend
+│   └── schema.ts         # Database schema and types
+└── README.md             # Project documentation
 ```
 
-## Database Schema
+## Future Roadmap
 
-```typescript
-// Users
-users {
-  id: serial (PK)
-  username: text
-  password: text
-}
-
-// Contacts (Appointment Form)
-contacts {
-  id: serial (PK)
-  name: text
-  email: text
-  phone: text
-  address: text
-  city: text
-  state: text
-  zipCode: text
-  service: text
-  message: text
-  createdAt: text
-}
-
-// Newsletter Subscribers
-subscribers {
-  id: serial (PK)
-  email: text
-  createdAt: text
-}
-```
-
-## Roadmap & Future Enhancements
-
-- [ ] User authentication for administrative access
-- [ ] Admin dashboard for managing appointments
-- [ ] Calendar integration for appointment scheduling
-- [ ] Email notifications for appointment confirmations
-- [ ] Online payment integration for service deposits
-- [ ] Customer portal for tracking service history
-- [ ] Integration with social media platforms
-- [ ] SEO optimizations for better visibility
-- [ ] Analytics to track visitor behavior
-- [ ] Vehicle service history tracking
-- [ ] Automated email marketing campaigns
-
-## Deployment
-
-The project is configured to be easily deployed to any hosting platform that supports Node.js applications. Recommended platforms include:
-
-- Vercel
-- Netlify
-- Heroku
-- DigitalOcean
-- AWS
+- **Online Payment Integration**: Add ability to accept payments for services
+- **Service History**: Track vehicle maintenance history for returning clients
+- **Admin Dashboard**: Interface for managing appointments and client data
+- **SMS Notifications**: Send appointment reminders via SMS
+- **Vehicle Information Storage**: Save details about client vehicles
 
 ## Contributing
 
@@ -206,7 +119,6 @@ The project is configured to be easily deployed to any hosting platform that sup
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact
+## Support
 
-For any questions or suggestions regarding this project, please contact:
-- Email: info@autoextreme.com
+For support, email support@blackdotautos.com or visit our website at https://blackdotautos.com.
