@@ -1,8 +1,32 @@
 # Blackdot Autos - Vehicle Maintenance Website
 
-A comprehensive automotive service management platform for Blackdot Autos, providing seamless online booking, client registration, and vehicle maintenance tracking.
+A professional website for Blackdot Autos, a vehicle maintenance and customization service. Features include:
 
-![Blackdot Autos](./generated-icon.png)
+- Responsive design optimized for all devices
+- Admin dashboard for content management
+- Database-driven gallery, testimonials and services
+- Secure JWT authentication for admin access
+- Image upload with thumbnail generation
+- Optimized performance and accessibility
+
+## Technologies
+
+- Frontend: HTML5, CSS3, JavaScript
+- Backend: Node.js, Express
+- Database: PostgreSQL
+- Authentication: JWT
+- Image processing: Sharp
+
+## Setup
+
+1. Install dependencies: `npm install`
+2. Configure database connection in `.env`
+3. Run migrations: `npm run migrate`
+4. Start server: `npm start`
+
+## Admin Access
+
+Access the admin dashboard at `/admin` with proper authentication.
 
 ## Features
 
