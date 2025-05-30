@@ -5,7 +5,7 @@ const Cta = () => {
     <section 
       className="py-24 bg-center bg-cover relative" 
       style={{ 
-        backgroundImage: "linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('https://pixabay.com/get/ga267a03ba3a489c2f464292c2e12bfd668c8cd60abb3b6ead34b37c71f2322fca25b73acdf343bbc0675e15635490e72a265c2e187dffc2905a773c509966223_1280.jpg')" 
+        backgroundImage: "linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')" 
       }}
     >
       <div className="container mx-auto px-4 md:px-6 text-center">
@@ -14,7 +14,7 @@ const Cta = () => {
             Ready to Experience Superior Auto Service?
           </h2>
           <p className="text-xl mb-8">
-            Schedule your appointment today and join thousands of satisfied customers who trust Auto Extreme with their vehicles.
+            Schedule your appointment today and join thousands of satisfied customers who trust Blackdot Autos with their vehicles.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 

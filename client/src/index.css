@@ -23,7 +23,14 @@
 --destructive-foreground: 60 9.1% 97.8%;
 --ring: 20 14.3% 4.1%;
 --radius: 0.5rem;
-  }
+  
+  /* Brand colors */
+  --brand-primary: #1d3557;
+  --brand-secondary: #457b9d;
+  --brand-accent: #e63946;
+  --brand-light: #f1faee;
+  --brand-text: #333333;
+}
   .dark {
       --background: 240 10% 3.9%;
 --foreground: 0 0% 98%;
@@ -54,5 +61,86 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* Add smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+    /* Prevent layout shifts */
+    overflow-x: hidden;
+    scroll-padding-top: 80px; /* For fixed header */
+  }
+}
+
+/* Containment optimizations */
+@layer utilities {
+  .contain-content {
+    contain: content;
+  }
+  
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-strict {
+    contain: strict;
+  }
+  
+  /* Improved touch targets for mobile */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Content-visibility for off-screen elements */
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
+  
+  /* Image lazy loading */
+  .img-lazy {
+    content-visibility: auto;
+    loading: lazy;
+  }
+  
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Fix for Safari input focus issues */
+input, button, select, textarea {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }

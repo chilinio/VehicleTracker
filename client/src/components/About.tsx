@@ -1,4 +1,5 @@
 import React from 'react';
+import OptimizedImage from './OptimizedImage';
 
 const About = () => {
   // Stats data
@@ -35,10 +36,12 @@ const About = () => {
           </div>
           
           <div className="order-1 lg:order-2 rounded-xl overflow-hidden shadow-2xl">
-            <img 
-              src="https://pixabay.com/get/g72ba503699cfe5aee5f820a5b7391f38307fb2d888121e9a43b3a1eba844f26240dc29870a84b2b5e7606d47c33cbc4b051690d882492eefd88e86caa9e867cf_1280.jpg" 
-              alt="Auto Extreme Team" 
+            <OptimizedImage 
+              src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Blackdot Autos Team" 
               className="w-full h-auto"
+              objectFit="cover"
+              priority={true}
             />
           </div>
         </div>
