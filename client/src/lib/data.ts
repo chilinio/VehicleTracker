@@ -23,12 +23,12 @@ export const services = [
   {
     title: "Interior Detailing",
     description: "Revitalize your vehicle's interior with our premium detailing services, from deep cleaning to leather restoration.",
-    image: "https://images.unsplash.com/photo-1583836132429-d44bb7a95fb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Wheel & Tire Services",
     description: "Complete tire and wheel services including alignment, balancing, custom wheels, and premium tire options.",
-    image: "https://images.unsplash.com/photo-1580635205837-b4f435e0a6cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   }
 ];
 
